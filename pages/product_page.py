@@ -1,6 +1,6 @@
 from .base_page import BasePage
 from selenium.webdriver.common.by import By
-from .locators import ProductPageLocators
+from .locators import ProductPageLocators, BasePageLocators
 
 class ProductPage(BasePage):
     def add_product_to_basket(self):
@@ -8,6 +8,10 @@ class ProductPage(BasePage):
             *ProductPageLocators.BUTTON_ADD_TO_BASKET)
         button_add_to_basket.click()
         #self.solve_quiz_and_get_code()
+
+    def go_to_basket_from_product_page(self):
+        basket = self.browser.find_element(*BasePageLocators.BASKET)
+        basket.click()
 
     def should_be_message_added_product(self):
         message_product_name = self.browser.find_element(\
