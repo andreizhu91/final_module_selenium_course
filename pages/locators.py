@@ -8,7 +8,7 @@ class LoginPageLocators():
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
     REGISTER_FORM = (By.CSS_SELECTOR, "#register_form")
     REGISTRATION_BUTTON = (By.CSS_SELECTOR, "#register_form>:nth-child(7)")
-    
+
 class ProductPageLocators():
     BUTTON_ADD_TO_BASKET = (By.CSS_SELECTOR, ".btn-add-to-basket")
     PRODUCT_NAME = (By.CSS_SELECTOR, ".product_main>h1")
@@ -26,3 +26,4 @@ class BasePageLocators():
 class BasketPageLocators():
     MESSAGE_ABOUT_BASKET_EMPTY = (By.CSS_SELECTOR, "#content_inner>p")
     LIST_PRODUCTS_IN_BASKET = (By.CSS_SELECTOR, ".basket-title.hidden-xs")
+    PRODUCT_IN_BASKET = (By.CSS_SELECTOR, ".thumbnail")

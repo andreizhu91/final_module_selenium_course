@@ -1,6 +1,6 @@
 from .base_page import BasePage
 from selenium.webdriver.common.by import By
-from .locators import ProductPageLocators, BasePageLocators
+from .locators import ProductPageLocators, BasePageLocators, BasketPageLocators
 
 class ProductPage(BasePage):
     def add_product_to_basket(self):
@@ -36,3 +36,17 @@ class ProductPage(BasePage):
     def should_is_disappeared_success_message(self):
         assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
            "Success message is presented, but should is disappearede"
+
+    def should_be_see_product_in_basket_opened_from_product_page(self):
+        basket_link = self.browser.find_element(*BasePageLocators.BASKET)
+        basket_link.click()
+        assert self.is_element_present(*BasketPageLocators.PRODUCT_IN_BASKET), \
+            "Fail, don't see product in basket"
+
+    def go_to_login_page_from_product_page(self):
+        try:
+            login_link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+            login_link.click()
+        except NoSuchElementException:
+            assert self.browser.current_url == 'http://selenium1py.pythonanywhere.com/en-gb/accounts/login/', \
+				"Fail, opened not login page"
